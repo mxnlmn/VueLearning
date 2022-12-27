@@ -1,7 +1,7 @@
 <template>
     <div class = "container">
       <Header title = "Task Tracker"/>
-      <Tasks @delete-task = "deleteTask" :tasks = "tasks"/>
+      <Tasks  @toggle-reminder="toggleReminder" @delete-task = "deleteTask" :tasks = "tasks"/>
     </div>
 </template>
 <script>
@@ -22,25 +22,28 @@ export default{
       if(confirm('Are you sure?')){
         this.tasks = this.tasks.filter((task) => task.id !== id)  
       }
+    },
+    toggleReminder(id){
+      console.log(id)
     }
   },
   created(){
     this.tasks = [
     {
       id: 1,  
-      text: "todo work 1",
+      text: "Hi, this is ToDo App",
       day: "12/25/2022",
       reminder: true
     },
     {
       id: 2,  
-      text: "todo work 2",
+      text: "This app was made by me with VueJs",
       day: "12/25/2022",
       reminder: true
     },
     {
       id: 3,  
-      text: "todo work 3",
+      text: "Enjoy",
       day: "12/25/2022",
       reminder: false
     },
@@ -48,7 +51,3 @@ export default{
   }
 }
 </script>
-
-
-<style scoped>
-</style>
